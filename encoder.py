@@ -35,6 +35,6 @@ with open('data/train.csv', 'r') as input_file, open('data/embeddings.csv', 'w',
         with torch.no_grad():
             outputs2 = model(**encoding2)
 
-        cls_embeddings = torch.cat((outputs1.last_hidden_state[:, 0, :], outputs2.last_hidden_state[:, 0, :]), dim=1)
+        cls_embeddings = torch.cat((outputs1.last_hidden_state[:, 0, :], outputs2.last_hidden_state[:, 0, :]), dim=1).tolist()
 
         csv_writer.writerow([pair_id, is_duplicate, cls_embeddings])
