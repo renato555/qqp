@@ -27,11 +27,14 @@ with open('data/train.csv', 'r') as input_file, open('data/embeddings.csv', 'w',
 
         print(f'Current pair: {pair_id}')
 
-        encoding = tokenizer(question1, question2, return_tensors='pt', padding=True, truncation=True)
-
+        encoding1 = tokenizer(question1, question2, return_tensors='pt', padding=True, truncation=True)
         with torch.no_grad():
-            outputs = model(**encoding)
+            outputs1 = model(**encoding1)
 
-        cls_embeddings = outputs.last_hidden_state[:, 0, :].tolist()
+        encoding2 = tokenizer(question1, question2, return_tensors='pt', padding=True, truncation=True)
+        with torch.no_grad():
+            outputs2 = model(**encoding2)
+
+        cls_embeddings = torch.cat((outputs1.last_hidden_state[:, 0, :], outputs2.last_hidden_state[:, 0, :]), dim=1)
 
         csv_writer.writerow([pair_id, is_duplicate, cls_embeddings])
