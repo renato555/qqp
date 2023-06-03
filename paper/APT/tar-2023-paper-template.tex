@@ -1,0 +1,72 @@
+% Paper template for TAR 2022
+% (C) 2014 Jan Šnajder, Goran Glavaš, Domagoj Alagić, Mladen Karan
+% TakeLab, FER
+
+\documentclass[10pt, a4paper]{article}
+
+\usepackage{tar2023}
+
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Beyond Duplicates: Unleashing Transitivity in Quora Data Augmentation}
+
+\name{Renato Jurišić, Mihael Miličević, Josip Srzić} 
+
+\address{
+University of Zagreb, Faculty of Electrical Engineering and Computing\\
+Unska 3, 10000 Zagreb, Croatia\\ 
+\texttt{\{renato.jurisic,mihael.milicevic,josip.srzic\}@fer.hr}\\
+}
+          
+         
+\abstract{ 
+This document provides the instructions on formatting the TAR system description paper in \LaTeX{}. This is where you write the abstract (i.e., summary) of the work you carried out within the project. The abstract is a paragraph of text ranging between 70 and 150 words.
+}
+
+\begin{document}
+
+\maketitleabstract
+
+\section{Introduction}
+- opisati duplicate question identification, zajedno s motivacijom
+- opisati motivaciju iza augmentacije kao postupka
+- opisati ukratko ideju vezanu za tranizitivnu augmentaciju
+- opisati research questions - pomaže li pozitivna augmentacija, s kojim korakom, koliko treba dodavati negativnih primjera da bi ostalo izbalansirano (spoiler alert: ne triba)
+
+\section{Related work}
+- opisati QQP competition (kaggle)
+- opisati ona dva rada što su došli uz zadatak
+- opisati onaj Renatov rad - oni nisu istraživali korake i udio negativnih spram pozitivnih
+
+\section{Augmentation with transitive relations}
+- cilj: približiti se relaciji ekvivalencije
+- zašto približiti a ne postići ju - zato što je dataset nepotpun i ako neki za neki par ne možemo augmentacijom doći do toga da su duplikati, ne prepostavljamo da nisu
+- smisliti neki primjer gdje A i B jesu ekvivalentni, B i C jesu, a A i C ne moraju biti - malo je shaky, ali mislimo da na našem datasetu prolazi
+- opisati vrlo precizno kako radimo augmentaciju i pozitivnih i negaitvnih primjera - dodati onaj graf
+- opisati zašto dodavanjem pozitivnih primjera ne možemo dobiti negativne parove
+- također opisati da nam je glavni cilj istražiti dodavanje pozitivnih parova, negativne dodajemo tek da vidimo trebalo li očuvati nebalansiranost dataseta
+- pokažemo par primjera pozitivnih i negativnih generiranih parova, s različitim koracima
+
+\section{Experimental setup}
+- opisati dataset - QQP rad
+- kako smo splittali podatke, kako smo pazili da nam ne leaka u test set blabla - brisali smo podatke koji su u test setu
+- opisati model - citirati BERT rad
+- optimizacija hiperparametara - opisati dobivene hiperparametre (radimo na datasetu BEZ augmentacije)
+- opisati training setup
+- eksperiment - ona tablica (citat: R.J.)
+- referirati Pytorch i ŠegvićCloud
+
+\section{Results}
+- rezulati eksperimenta - pokazati negativne primjere koje ne može naučiti - naša interpretacija zašto
+- tablice, statistički testovi, grafovi
+
+\section{Conclusion}
+- opisati što smo radili
+- opisati rezultate koje smo dobili
+- future work - istražiti druge modele, druge datasetove
+
+\end{document}
