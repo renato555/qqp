@@ -7,11 +7,7 @@ from torch.utils.data import DataLoader
 from sklearn.metrics import classification_report
 from tqdm import tqdm
 
-print('IM HERE')
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-print('im here')
 
 class QQPModel(nn.Module):
     def __init__(self):
