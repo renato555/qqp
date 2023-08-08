@@ -12,7 +12,7 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 model = BertModel.from_pretrained('bert-base-uncased').to(device)
 
-data = pd.read_csv('data/all_possible_pairs.csv')
+data = pd.read_csv('../data/all_possible_pairs.csv')
 
 os.makedirs('embeddings', exist_ok=True)
 
